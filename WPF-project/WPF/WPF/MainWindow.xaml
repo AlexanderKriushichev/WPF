@@ -1,0 +1,34 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WPF" x:Class="WPF.MainWindow"
+        Title="MainWindow" Height="300" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="One"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"/>
+        <TextBlock Text="Two"
+			Grid.Row="1"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"/>
+        <TextBlock Text="Three"
+			Grid.Row="2"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"/>
+        <local:DataBar PlusBrush="Red" MinusBrush="Blue" Value="74" Range="100" Grid.Column="1" VerticalAlignment="Center" Margin="0,33,10,33" Grid.Row="0"  Width="226" HorizontalAlignment="Right"/>
+        <local:DataBar PlusBrush="Red" MinusBrush="Blue" Value="-2" Range="25" Grid.Column="1" VerticalAlignment="Center" Margin="0,33,10,33" Grid.Row="1" HorizontalAlignment="Right" Width="226"/>
+        <local:DataBar PlusBrush="Red" MinusBrush="Blue" Value="10" Range="25" Grid.Row="2" VerticalAlignment="Center" Margin="0,33,10,33"  Foreground="#FFFF1F1F" HorizontalAlignment="Right" Width="226" Grid.Column="1"/>
+        <Rectangle Grid.Column="1" Fill="Black" Margin="0,0,121,1" Grid.RowSpan="3" Stroke="Black" HorizontalAlignment="Right" Width="2"/>
+
+    </Grid>
+</Window>

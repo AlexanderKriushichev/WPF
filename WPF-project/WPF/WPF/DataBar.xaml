@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="WPF.DataBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local ="clr-namespace:WPF"
+             x:Name="_this"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="200" Foreground="Red">
+
+    <UserControl.Resources>
+        <local:RightMarginConverter x:Key="RightMarginConverter">
+        </local:RightMarginConverter>
+        <local:LeftMarginConverter x:Key="LeftMarginConverter">
+        </local:LeftMarginConverter>
+        <local:ValueConverter x:Key="ValueConverter">
+        </local:ValueConverter>
+        <local:LableAlignmentConverter x:Key="LableAlignmentConverter">
+        </local:LableAlignmentConverter>
+        <local:LableMarginConverter x:Key="LableMarginConverter">
+        </local:LableMarginConverter>
+    </UserControl.Resources>
+    <Grid Width="{Binding ElementName=_this, Path= Width}" Height="{Binding ElementName=_this, Path= Height}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Right" Fill="{Binding PlusBrush, ElementName=_this}" Stroke="Black" RenderTransformOrigin="0.5,0.5"  >
+            <Rectangle.Margin>
+                <MultiBinding Converter="{StaticResource RightMarginConverter}">
+                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
+                    <Binding Path="Range" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}"  PresentationTraceSources.TraceLevel="High"/>
+                    <Binding ElementName="_this" Path="Width"/>
+                </MultiBinding>
+            </Rectangle.Margin>
+        </Rectangle>
+        <Rectangle x:Name="Left" Fill="{Binding MinusBrush, ElementName=_this}" Stroke="Black" RenderTransformOrigin="0.5,0.5"  >
+            <Rectangle.Margin>
+                <MultiBinding Converter="{StaticResource LeftMarginConverter}">
+                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
+                    <Binding Path="Range" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}"  PresentationTraceSources.TraceLevel="High"/>
+                    <Binding ElementName="_this" Path="Width"/>
+                </MultiBinding>
+            </Rectangle.Margin>
+        </Rectangle>
+        <Label Height="{Binding ElementName=_this, Path= Height}" FontFamily="Arial" VerticalContentAlignment="Center">
+            <Label.Content>
+                <MultiBinding Converter="{StaticResource ValueConverter}">
+                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
+                </MultiBinding>
+            </Label.Content>
+            <Label.HorizontalContentAlignment>
+                <MultiBinding Converter="{StaticResource LableAlignmentConverter}">
+                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
+                </MultiBinding>
+            </Label.HorizontalContentAlignment>
+            <Label.Margin>
+                <MultiBinding Converter="{StaticResource LableMarginConverter}">
+                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
+                    <Binding Path="Range" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}"  PresentationTraceSources.TraceLevel="High"/>
+                    <Binding ElementName="_this" Path="Width"/>
+                </MultiBinding>
+            </Label.Margin>
+        </Label>
+    </Grid>
+</UserControl>
