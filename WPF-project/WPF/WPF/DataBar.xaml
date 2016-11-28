@@ -6,8 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local ="clr-namespace:WPF"
              x:Name="_this"
-             mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="200" Foreground="Red">
+             mc:Ignorable="d" d:DesignWidth="200" Foreground="Red" Height="33.167">
 
     <UserControl.Resources>
         <local:RightMarginConverter x:Key="RightMarginConverter">
@@ -40,12 +39,7 @@
                 </MultiBinding>
             </Rectangle.Margin>
         </Rectangle>
-        <Label Height="{Binding ElementName=_this, Path= Height}" FontFamily="Arial" VerticalContentAlignment="Center">
-            <Label.Content>
-                <MultiBinding Converter="{StaticResource ValueConverter}">
-                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
-                </MultiBinding>
-            </Label.Content>
+        <Label Height="{Binding Height, ElementName=_this}" FontFamily="Arial" VerticalContentAlignment="Center">
             <Label.HorizontalContentAlignment>
                 <MultiBinding Converter="{StaticResource LableAlignmentConverter}">
                     <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
@@ -58,6 +52,9 @@
                     <Binding ElementName="_this" Path="Width"/>
                 </MultiBinding>
             </Label.Margin>
+            <MultiBinding Converter="{StaticResource ValueConverter}">
+                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}" PresentationTraceSources.TraceLevel="High"/>
+            </MultiBinding>
         </Label>
     </Grid>
 </UserControl>
