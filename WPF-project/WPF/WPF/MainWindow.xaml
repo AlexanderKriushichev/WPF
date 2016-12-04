@@ -2,32 +2,23 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WPF" x:Class="WPF.MainWindow"
-        Title="MainWindow" Height="300" Width="500">
+        Title="MainWindow" Height="500" Width="500">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="97*" />
+            <RowDefinition Height="14*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <TextBlock Text="One"
-			HorizontalAlignment="Center"
-			VerticalAlignment="Center"/>
-        <TextBlock Text="Two"
-			Grid.Row="1"
-			HorizontalAlignment="Center"
-			VerticalAlignment="Center"/>
-        <TextBlock Text="Three"
-			Grid.Row="2"
-			HorizontalAlignment="Center"
-			VerticalAlignment="Center"/>
-        <local:DataBar PlusBrush="Red" MinusBrush="Blue" Value="7" Range="25" Grid.Column="1" VerticalAlignment="Center" Margin="0,32,10,33" Grid.Row="0"  Width="226" HorizontalAlignment="Right" Height="25"/>
-        <local:DataBar PlusBrush="Red" MinusBrush="Blue" Value="-20" Range="25" Grid.Column="1" VerticalAlignment="Center" Margin="0,30,10,37" Grid.Row="1" HorizontalAlignment="Right" Width="226" Height="23"/>
-        <local:DataBar PlusBrush="Red" MinusBrush="Blue" Value="10" Range="25" Grid.Row="2" VerticalAlignment="Center" Margin="0,37,10,32"  Foreground="#FFFF1F1F" HorizontalAlignment="Right" Width="226" Height="21" Grid.Column="1"/>
+        <TextBox x:Name="nameBox" HorizontalAlignment="Left" Height="23" Margin="57,27,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Value" HorizontalAlignment="Left" Margin="218,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="valueBox" HorizontalAlignment="Left" Height="23" Margin="263,27,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ButtonAdd" Content="Add" HorizontalAlignment="Left" Margin="407,27,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="ButtonAdd_Click"/>
+        <ScrollViewer x:Name="scrollViewer" HorizontalAlignment="Left" Height="368" Margin="10,10,0,0" VerticalAlignment="Top" Width="472">
+            <StackPanel x:Name="stackPanel" Height="0" Width="460"/>
+        </ScrollViewer>
 
     </Grid>
 </Window>

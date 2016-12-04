@@ -22,6 +22,9 @@ namespace WPF
     {
 
         public static readonly DependencyProperty PlusBrushProperty = DependencyProperty.Register("PlusBrush", typeof(Brush), typeof(DataBar));
+        /// <summary>
+        /// Цвет кисти в положительном значении
+        /// </summary>
         public Brush PlusBrush
         {
             get { return (Brush)this.GetValue(PlusBrushProperty); }
@@ -29,6 +32,9 @@ namespace WPF
         }
 
         public static readonly DependencyProperty MinusBrushProperty = DependencyProperty.Register("MinusBrush", typeof(Brush), typeof(DataBar));
+        /// <summary>
+        /// Цвет кисти в отрицательном значении
+        /// </summary>
         public Brush MinusBrush
         {
             get { return (Brush)this.GetValue(MinusBrushProperty); }
@@ -36,6 +42,9 @@ namespace WPF
         }
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(float), typeof(DataBar));
+        /// <summary>
+        /// Значение
+        /// </summary>
         public float Value
         {
             get { return (float)this.GetValue(ValueProperty); }
@@ -43,6 +52,9 @@ namespace WPF
         }
 
         public static readonly DependencyProperty RangeProperty = DependencyProperty.Register("Range", typeof(float), typeof(DataBar));
+        /// <summary>
+        /// Диапазон
+        /// </summary>
         public float Range
         {
             get { return (float)this.GetValue(RangeProperty); }
@@ -55,6 +67,9 @@ namespace WPF
         }
     }
 
+    /// <summary>
+    /// Класс конвертации значения и диапозона в границы для положительного квадрата
+    /// </summary>
     public class RightMarginConverter : IMultiValueConverter
     {
 
@@ -84,6 +99,9 @@ namespace WPF
         }
     }
 
+    /// <summary>
+    /// Класс конвертации значения и диапозона в границы для отрицательного квадрата
+    /// </summary>
     public class LeftMarginConverter : IMultiValueConverter
     {
 
@@ -113,6 +131,9 @@ namespace WPF
         }
     }
 
+    /// <summary>
+    /// Класс конвертации значения в строку
+    /// </summary>
     public class ValueConverter : IMultiValueConverter
     {
 
@@ -131,6 +152,10 @@ namespace WPF
         }
     }
 
+
+    /// <summary>
+    /// Класс конвертации значения положение текста
+    /// </summary>
     public class LableAlignmentConverter : IMultiValueConverter
     {
 
@@ -142,42 +167,13 @@ namespace WPF
             HorizontalAlignment type = HorizontalAlignment.Center;
             if ((float)values[0] >= 0)
             {
-                type = HorizontalAlignment.Left;
-            }
-            else
-            {
                 type = HorizontalAlignment.Right;
             }
-            return type;
-        }
-
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return null;
-        }
-    }
-
-    public class LableMarginConverter : IMultiValueConverter
-    {
-
-        public object Convert(object[] values, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            if (Application.Current == null ||
-                Application.Current.GetType() != typeof(App))
-                return false;
-            double value = (float)values[0];
-            double range = (float)values[1];
-            double width = (double)values[2];
-            Thickness thick;
-            if (value < 0)
-            {
-                thick = new Thickness(range != 0 ? (width / 2 - width / 2 * (value / range)) - width : 0, 0, range != 0 ? width / 2 - width / 2 * (value / range) : 0, 0);
-            }
             else
             {
-                thick = new Thickness(range != 0 ? width / 2 + width / 2 * (value / range) : 0, 0, range != 0 ? (width / 2 + width / 2 * (value / range)) - width : 0, 0);
+                type = HorizontalAlignment.Left;
             }
-            return thick;
+            return type;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)

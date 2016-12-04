@@ -20,9 +20,30 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public int maxRange = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        public void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Bar bar = new Bar();
+            bar.name.Content = nameBox.Text;
+            bar.dataBar.Value = Convert.ToInt32(valueBox.Text);
+            if (maxRange < Math.Abs(Convert.ToInt32(valueBox.Text)))
+                maxRange = Math.Abs(Convert.ToInt32(valueBox.Text));
+            bar.dataBar.Range = maxRange;
+            foreach (UIElement child in stackPanel.Children)
+            {
+                (child as Bar).dataBar.Range = maxRange;
+            }
+            stackPanel.Children.Add(bar);
+            stackPanel.Height += 100;
+            scrollViewer.Content = stackPanel;
         }
     }
 }

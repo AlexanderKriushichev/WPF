@@ -52,3 +52,5 @@ C:\Users\Alex\Documents\WPF\WPF-project\WPF\WPF\obj\Debug\MainWindow.baml
 C:\Users\Alex\Documents\WPF\WPF-project\WPF\WPF\obj\Debug\WPF.g.resources
 C:\Users\Alex\Documents\WPF\WPF-project\WPF\WPF\obj\Debug\WPF.Properties.Resources.resources
 C:\Users\Alex\Documents\WPF\WPF-project\WPF\WPF\obj\Debug\WPF.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\WPF\WPF-project\WPF\WPF\obj\Debug\Bar.g.cs
+C:\Users\Alex\Documents\WPF\WPF-project\WPF\WPF\obj\Debug\Bar.baml
